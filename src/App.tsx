@@ -1,6 +1,7 @@
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from 'react-router-dom'
 import Lab1 from './Lab/lab1'
+import Lab2 from './Lab/lab2'
 import { Link } from "react-router-dom";
 import { Button } from "antd";
 
@@ -60,6 +61,7 @@ function App() {
 
     <Routes>
     <Route path="/lab1" element={<Lab1 />} />
+    <Route path="/lab2" element={<Lab2 />} />
     </Routes>
       </div>
       </Content>
