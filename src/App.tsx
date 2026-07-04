@@ -2,6 +2,7 @@ import { Toaster } from "react-hot-toast";
 import { Route, Routes } from 'react-router-dom'
 import Lab1 from './Lab/lab1'
 import Lab2 from './Lab/lab2'
+import Lab3 from './Lab/lab3'
 import { Link } from "react-router-dom";
 import { Button } from "antd";
 
@@ -51,17 +52,18 @@ function App() {
       <div className="max-w-6xl mx-auto mt-10 px-4 text-center">
         <h1 className="text-4xl font-bold mb-4">Chào mừng đến với WEB2091</h1>
         {/* button */}
-        <Button>Default</Button>
+        {/* <Button>Default</Button>
         <Button type="primary">Primary</Button>
         <Button type="text">Text</Button>
         <Button type="link">Link</Button>
-        <Button type="dashed">Dashed</Button>
+        <Button type="dashed">Dashed</Button> */}
 
         
 
     <Routes>
     <Route path="/lab1" element={<Lab1 />} />
     <Route path="/lab2" element={<Lab2 />} />
+    <Route path="/lab3" element={<Lab3 />} />
     </Routes>
       </div>
       </Content>

@@ -36,9 +36,7 @@ const columns3 = [
     {title: "ID", dataIndex: "id",},
     {title: "Name", dataIndex: "name"},
     {title: "Email", dataIndex: "email"},
-    {
-    title: "Status",
-    dataIndex: "status",
+    {title: "Status", dataIndex: "status",
     render: (status) => (
       <span style={{ color: status === "active" ? "green" : "red" }}>
         {status}
