@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Lab1 from './Lab/lab1'
 import Lab2 from './Lab/lab2'
 import Lab3 from './Lab/lab3'
+import Lab4 from './Lab/Lab4'
 import { Link } from "react-router-dom";
 import { Button } from "antd";
 
@@ -64,6 +65,7 @@ function App() {
     <Route path="/lab1" element={<Lab1 />} />
     <Route path="/lab2" element={<Lab2 />} />
     <Route path="/lab3" element={<Lab3 />} />
+    <Route path="/lab4" element={<Lab4 />} />
     </Routes>
       </div>
       </Content>
