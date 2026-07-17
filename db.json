@@ -63,5 +63,16 @@
       "description": "Một bộ truyện tiên hiệp cổ trang ly kỳ, xoay quanh hành trình tu tiên, giải mã các vụ án bí ẩn và định mệnh của các nhân vật chính.",
       "isActive": true
     }
+  ],
+  "categories": [
+    {
+      "categoryId": "Hành động"
+    },
+    {
+      "categoryId": "Hài"
+    },
+    {
+      "categoryId": "Kịch tính"
+    }
   ]
 }

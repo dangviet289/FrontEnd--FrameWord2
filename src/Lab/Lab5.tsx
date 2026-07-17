@@ -32,7 +32,7 @@ const { data: rawCategories = [], isLoading: isCategoriesLoading } = useQuery({
     value: category.categoryId || category.id,
     label: category.categoryTitle || category.title
   }));
-
+const [form] = Form.useForm();
     const mutation = useMutation({
         mutationFn: async (data: Story) => {
             const res = await axios.post("http://localhost:3000/stories", data);
@@ -40,16 +40,18 @@ const { data: rawCategories = [], isLoading: isCategoriesLoading } = useQuery({
     },
     onSuccess: () => {
         toast.success("Them truyen thanh cong!");
+        form.resetFields()
     },
     onError: () => {
         toast.error("Them truyen that bai!");
     },
 })
+
 const onFinish = (values: Story) => {
     mutation.mutate(values);
 }
 return (
-    <Form onFinish={onFinish} layout="vertical" style={{maxWidth: 600}}>
+    <Form onFinish={onFinish} form={form} layout="vertical" style={{maxWidth: 600}}>
         <Form.Item
         label="Ten truyen"
         name="title"
@@ -75,10 +77,11 @@ return (
             placeholder="Chọn một danh mục"
             options={categoryOptions} 
             showSearch
-            optionFilterProp="children"
+            optionFilterProp = "label"
             filterOption={(input, option) =>
-              (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+              String(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
             }
+            disabled={mutation.isPending}
           />
         </Form.Item>
 
@@ -100,8 +103,8 @@ return (
       <Checkbox>Active</Checkbox>
     </Form.Item>
 
-        <Button type="primary" htmlType="submit" loading={mutation.isPending}>
-            Them truyen
+        <Button type="primary" htmlType="submit" loading={mutation.isPending} disabled={mutation.isPending}>
+            {mutation.isPending ? 'Đang thêm truyện...' : 'Thêm truyện'}
         </Button>
     </Form>
 )
