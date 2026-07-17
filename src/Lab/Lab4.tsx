@@ -1,11 +1,11 @@
-import {Table, Image, Spin, Input} from "antd"
+import {Table, Image, Spin, Input, Button, message, Popconfirm} from "antd"
 import { useState } from "react";
-import {useQuery} from "@tanstack/react-query"
+import {useQuery, useMutation, useQueryClient} from "@tanstack/react-query"
 import axios from "axios"
 
 const Lab4 = () => {
     const [keyword, setKeyword] = useState<string>("");
-    
+    const queryClient = useQueryClient();
     const {data, isLoading, isError} = useQuery({
         queryKey: ["stories"],
         queryFn: async () => {
@@ -14,10 +14,22 @@ const Lab4 = () => {
         }
     })
 
-const handleDelete = async (id: number) => {
-  await axios.delete(`http://localhost:3000/stories/${id}`);
-  window.location.reload();
-};
+const deleteMutation = useMutation({
+        mutationFn: async (id: number) => {
+            await axios.delete(`http://localhost:3000/stories/${id}`);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["stories"] });
+            message.success("Xóa truyện thành công!");
+        },
+        onError: () => {
+            message.error("Lỗi khi xóa truyện!");
+        }
+    });
+
+    const handleDelete = (id: number) => {
+        deleteMutation.mutate(id);
+    };
 
 
     const columns = [
@@ -71,7 +83,12 @@ const handleDelete = async (id: number) => {
         style={{ marginBottom: 16, width: 300 }}
         allowClear 
       />
-      <Table columns={columns} dataSource={filteredData} rowKey="id" pagination={{ pageSize: 5 }} />
+      <Table
+       columns={columns} 
+       dataSource={filteredData} 
+       rowKey="id" 
+       pagination={{ pageSize: 5 }} 
+       loading={deleteMutation.isPending} />
     </div>
     </> )
 }
