@@ -1,9 +1,12 @@
-import {Table, Image, Spin, Input, Button, message, Popconfirm} from "antd"
+import {Table, Image, Spin, Input, Button,Form, message, Popconfirm} from "antd"
 import { useState } from "react";
 import {useQuery, useMutation, useQueryClient} from "@tanstack/react-query"
+import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 
+
 const Lab4 = () => {
+    const navigate = useNavigate();
     const [keyword, setKeyword] = useState<string>("");
     const queryClient = useQueryClient();
     const {data, isLoading, isError} = useQuery({
@@ -31,7 +34,9 @@ const deleteMutation = useMutation({
         deleteMutation.mutate(id);
     };
 
-
+const handleEdit = (id: string | number) => {
+    navigate(`/lab6/${id}`); 
+  };
     const columns = [
         {
             title: "ID",
@@ -61,10 +66,15 @@ const deleteMutation = useMutation({
         },
         {
             title: "Hành Động",
-            render: (_: any, record: any) => (
+            render: (_: any, record: any) => (<>
     <button onClick={() => handleDelete(record.id)}>
       Xóa
     </button>
+    <p></p>
+     <button onClick={() => handleEdit(record.id)}>
+      Sửa
+    </button>
+    </>
   )
 }
     ]

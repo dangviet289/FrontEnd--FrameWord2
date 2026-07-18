@@ -1,13 +1,11 @@
 {
   "stories": [
     {
-      "id": "1",
-      "title": "Đắc Nhân Tâm",
-      "author": "Dale Carnegie",
-      "genre": "action",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkPcISpo05fF-yTimw2Fp_XXPzWWQ9QGcs7HbEMxlxSQ&s=10",
-      "description": "Cuốn sách đưa ra các lời khuyên về cách thức cư xử, ứng xử và giao tiếp với mọi người để đạt được thành công trong cuộc sống.",
-      "isActive": true
+      "title": "Nhà Giả Kim1",
+      "author": "Paulo Coelho",
+      "image": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400",
+      "description": "Hành trình theo đuổi vận mệnh của chàng chăn cừu Santiago, một câu chuyện thúc giục người đọc theo đuổi giấc mơ của mình.",
+      "id": "1"
     },
     {
       "id": "2",
